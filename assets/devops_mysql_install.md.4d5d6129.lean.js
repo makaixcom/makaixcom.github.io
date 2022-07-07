@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.4bcbd411.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/mysql/install.md"}'),p={name:"devops/mysql/install.md"},o=l("",5),e=[o];function c(t,r,D,y,i,A){return n(),a("div",null,e)}var F=s(p,[["render",c]]);export{d as __pageData,F as default};

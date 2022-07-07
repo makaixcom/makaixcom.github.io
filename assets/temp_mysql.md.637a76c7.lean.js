@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as l}from"./app.2cf86ac7.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"temp/mysql.md"}'),p={name:"temp/mysql.md"},o=l("",5),e=[o];function c(t,r,D,y,A,i){return n(),a("div",null,e)}var F=s(p,[["render",c]]);export{d as __pageData,F as default};

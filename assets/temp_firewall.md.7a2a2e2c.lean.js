@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as l,a as n}from"./app.2cf86ac7.js";const C=JSON.parse('{"title":"\u67E5\u770Bfirewall\u670D\u52A1\u72B6\u6001","description":"","frontmatter":{},"headers":[],"relativePath":"temp/firewall.md"}'),e={name:"temp/firewall.md"},p=n("",12),c=[p];function t(i,o,r,d,y,f){return l(),a("div",null,c)}var m=s(e,[["render",t]]);export{C as __pageData,m as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t}from"./app.4bcbd411.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/vmware/vmware-template.md"}'),r={name:"devops/vmware/vmware-template.md"};function o(s,n,p,c,m,d){return t(),a("div")}var l=e(r,[["render",o]]);export{_ as __pageData,l as default};
