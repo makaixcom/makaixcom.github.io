@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as e}from"./app.2cf86ac7.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"temp/nexus-docker-compose.md"}'),p={name:"temp/nexus-docker-compose.md"},o=e("",1),l=[o];function c(t,r,i,_,A,C){return a(),n("div",null,l)}var u=s(p,[["render",c]]);export{m as __pageData,u as default};
