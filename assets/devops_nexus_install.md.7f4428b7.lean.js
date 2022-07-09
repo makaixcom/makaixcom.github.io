@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as e}from"./app.4bcbd411.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/nexus/install.md"}'),l={name:"devops/nexus/install.md"},p=e("",1),o=[p];function t(c,r,i,_,A,C){return n(),a("div",null,o)}var y=s(l,[["render",t]]);export{u as __pageData,y as default};
