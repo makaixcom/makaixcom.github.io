@@ -7,7 +7,7 @@
     <meta name="description" content="只见广厦千万，不见寒士欢颜。">
     <link rel="stylesheet" href="/assets/style.d1dca3a2.css">
     <link rel="modulepreload" href="/assets/app.2cf86ac7.js">
-    <link rel="modulepreload" href="/assets/devops_gitlab_install-gitlab.md.b7c50996.lean.js">
+    <link rel="modulepreload" href="/assets/devops_gitlab_install-gitlab.md.3a534e9d.lean.js">
     
     <script>(()=>{const e=localStorage.getItem("vitepress-theme-appearance"),a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
   </head>
@@ -23,8 +23,9 @@
 <span class="line"><span style="color:#A6ACCD;">    environment: </span></span>
 <span class="line"><span style="color:#A6ACCD;">      TZ: &#39;Asia/Shanghai&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">      GITLAB_OMNIBUS_CONFIG: | </span></span>
-<span class="line"><span style="color:#A6ACCD;">        external_url &#39;http://192.168.3.129:8929&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">        external_url &#39;http://192.168.3.130:8929&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">        gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2224</span></span>
+<span class="line"><span style="color:#A6ACCD;">        gitlab_rails[&#39;gravatar_plain_url&#39;] = &#39;https://gravatar.loli.net/avatar/%{hash}?s=%{size}&amp;d=identicon&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">    ports:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      - &#39;8929:8929&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">      - &#39;2224:2224&#39;</span></span>
@@ -32,10 +33,49 @@
 <span class="line"><span style="color:#A6ACCD;">      - &#39;./config:/etc/gitlab&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">      - &#39;./logs:/var/log/gitlab&#39;</span></span>
 <span class="line"><span style="color:#A6ACCD;">      - &#39;./data:/var/opt/gitlab&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">version: &#39;3.7&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">services:</span></span>
+<span class="line"><span style="color:#A6ACCD;">  web:</span></span>
+<span class="line"><span style="color:#A6ACCD;">    image: &#39;gitlab/gitlab-ce:latest&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    restart: always</span></span>
+<span class="line"><span style="color:#A6ACCD;">    hostname: &#39;localhost&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    container_name: gitlab-ce</span></span>
+<span class="line"><span style="color:#A6ACCD;">    environment:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      GITLAB_OMNIBUS_CONFIG: |</span></span>
+<span class="line"><span style="color:#A6ACCD;">        external_url &#39;http://localhost&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    ports:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;8080:80&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;8443:443&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    volumes:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;./config:/etc/gitlab&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;./logs:/var/log/gitlab&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;./data:/var/opt/gitlab&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    networks:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - gitlab</span></span>
+<span class="line"><span style="color:#A6ACCD;">  gitlab-runner:</span></span>
+<span class="line"><span style="color:#A6ACCD;">    image: gitlab/gitlab-runner:alpine</span></span>
+<span class="line"><span style="color:#A6ACCD;">    deploy:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      mode: replicated</span></span>
+<span class="line"><span style="color:#A6ACCD;">      replicas: 4</span></span>
+<span class="line"><span style="color:#A6ACCD;">    container_name: gitlab-runner    </span></span>
+<span class="line"><span style="color:#A6ACCD;">    restart: always</span></span>
+<span class="line"><span style="color:#A6ACCD;">    depends_on:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - web</span></span>
+<span class="line"><span style="color:#A6ACCD;">    volumes:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - &#39;./gitlab-runner:/etc/gitlab-runner&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    networks:</span></span>
+<span class="line"><span style="color:#A6ACCD;">      - gitlab</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">networks:</span></span>
+<span class="line"><span style="color:#A6ACCD;">  gitlab:</span></span>
+<span class="line"><span style="color:#A6ACCD;">    name: gitlab-network</span></span>
 <span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h2 id="启动" tabindex="-1">启动 <a class="header-anchor" href="#启动" aria-hidden="true">#</a></h2><div class="language-"><span class="copy"></span><pre><code><span class="line"><span style="color:#A6ACCD;">docker-compose up -d</span></span>
 <span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h2 id="查看-root-密码" tabindex="-1">查看 root 密码 <a class="header-anchor" href="#查看-root-密码" aria-hidden="true">#</a></h2><div class="language-"><span class="copy"></span><pre><code><span class="line"><span style="color:#A6ACCD;">cat config/initial_root_password</span></span>
 <span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h2 id="其他小设置" tabindex="-1">其他小设置 <a class="header-anchor" href="#其他小设置" aria-hidden="true">#</a></h2><p>修改成中文 修改星期一 修改密码 修改头像 修改绝对时间</p></div></div></main><footer class="VPDocFooter" data-v-79ca2460 data-v-04568844><div class="edit-info" data-v-04568844><!----><!----></div><!----></footer><!--[--><!--]--></div></div></div></div></div><!----><!--[--><!--]--></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"about_me.md\":\"7358cff6\",\"about_site.md\":\"378f8c01\",\"devops_docker_install-docker-compose.md\":\"82e127a2\",\"devops_docker_install.md\":\"52113c10\",\"devops_docker_jar2image.md\":\"4bd35989\",\"devops_docker_mirror.md\":\"018de7ba\",\"devops_git_install-win.md\":\"d7a0b3d0\",\"devops_gitlab_install-bak.md\":\"4b20a8f2\",\"devops_gitlab_install-gitlab.md\":\"b7c50996\",\"devops_index.md\":\"c3d2d9aa\",\"devops_linux_rockylinux-install.md\":\"8fafe509\",\"devops_linux_firewall.md\":\"06689b8a\",\"devops_linux_ip.md\":\"be5dfec3\",\"devops_linux_openjdk-install.md\":\"cfd81b8a\",\"devops_linux_yum.md\":\"ac2e4772\",\"devops_mysql_install.md\":\"3b21f86f\",\"devops_nexus_install.md\":\"5fe4a48a\",\"devops_nginx_install-docker.md\":\"910017ba\",\"devops_node_install-node.md\":\"98ad92f2\",\"devops_vmware_install.md\":\"49b0831c\",\"devops_vmware_vmware-template.md\":\"528535ed\",\"index.md\":\"c8c2d1e2\",\"temp_index.md\":\"ac392fa7\",\"tools_idea-conf.md\":\"109d5ba8\",\"tools_idea-install.md\":\"33dd66ef\",\"tools_idea-plugins.md\":\"6b048443\",\"tools_idea-settings.md\":\"4a9c1efa\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"about_me.md\":\"7358cff6\",\"about_site.md\":\"378f8c01\",\"devops_docker_install-docker-compose.md\":\"82e127a2\",\"devops_docker_install.md\":\"52113c10\",\"devops_docker_jar2image.md\":\"4bd35989\",\"devops_docker_mirror.md\":\"018de7ba\",\"devops_git_install-win.md\":\"d7a0b3d0\",\"devops_gitlab_install-bak.md\":\"4b20a8f2\",\"devops_gitlab_install-gitlab.md\":\"3a534e9d\",\"devops_index.md\":\"c3d2d9aa\",\"devops_linux_rockylinux-install.md\":\"8fafe509\",\"devops_linux_firewall.md\":\"06689b8a\",\"devops_linux_ip.md\":\"be5dfec3\",\"devops_linux_openjdk-install.md\":\"cfd81b8a\",\"devops_linux_yum.md\":\"ac2e4772\",\"devops_mysql_install.md\":\"3b21f86f\",\"devops_nexus_install.md\":\"5fe4a48a\",\"devops_nginx_install-docker.md\":\"910017ba\",\"devops_node_install-node.md\":\"98ad92f2\",\"devops_vmware_install.md\":\"49b0831c\",\"devops_vmware_vmware-template.md\":\"528535ed\",\"index.md\":\"c8c2d1e2\",\"temp_index.md\":\"76e806af\",\"tools_idea-conf.md\":\"109d5ba8\",\"tools_idea-install.md\":\"33dd66ef\",\"tools_idea-plugins.md\":\"6b048443\",\"tools_idea-settings.md\":\"4a9c1efa\"}")</script>
     <script type="module" async src="/assets/app.2cf86ac7.js"></script>
     
   </body>
