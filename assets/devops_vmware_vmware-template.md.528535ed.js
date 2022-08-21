@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t}from"./app.2cf86ac7.js";const v=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/vmware/vmware-template.md"}'),r={name:"devops/vmware/vmware-template.md"};function o(s,m,p,c,n,d){return t(),a("div")}var i=e(r,[["render",o]]);export{v as __pageData,i as default};

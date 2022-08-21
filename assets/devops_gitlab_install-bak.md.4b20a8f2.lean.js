@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as l}from"./app.2cf86ac7.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"devops/gitlab/install-bak.md"}'),p={name:"devops/gitlab/install-bak.md"},e=l("",1),t=[e];function o(i,c,r,A,C,_){return n(),a("div",null,t)}var D=s(p,[["render",o]]);export{y as __pageData,D as default};
