@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as r,b as e,d as c}from"./app.d8dc43cb.js";const _={},n=e("h2",{id:"_2022",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#_2022","aria-hidden":"true"},"#"),c(" 2022")],-1),o=[n];function s(i,d){return a(),r("div",null,o)}var h=t(_,[["render",s],["__file","timeline.html.vue"]]);export{h as default};
